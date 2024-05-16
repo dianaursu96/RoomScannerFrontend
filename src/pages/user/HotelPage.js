@@ -32,8 +32,8 @@ const RecipeDetail = () => {
   const id = params.id;
   const [isLoading, setIsLoading] = useState(false);
 
-  const [checkInDate, setCheckInDate] = useState(new Date());
-  const [checkOutDate, setCheckOutDate] = useState(new Date());
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
   const [roomType, setRoomType] = useState("Single");
 
   useEffect(() => {
@@ -62,47 +62,42 @@ const RecipeDetail = () => {
       });
   }, []);
 
-  const handleCheckAvailability = () => {};
-
-  const handleCheckInDateChange = (date) => {
-    setCheckInDate(date);
+  const handleCheckAvailability = () => {
+    setIsLoading(true);
+    axios({
+      method: "POST",
+      url: `http://localhost:8081/rooms/availability`,
+      data: {
+        hotelId: 1,
+        checkin: `${checkInDate}T11:00:00`,
+        checkout: `${checkOutDate}T11:00:00`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setRooms(res.data);
+        } else {
+          dispatch(alertActions.setErrorMessage(res.error.message));
+        }
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        dispatch(alertActions.setErrorMessage(err.message));
+        setIsLoading(false);
+      });
   };
 
-  const handleCheckOutDateChange = (date) => {
-    setCheckOutDate(date);
+  const handleCheckInDateChange = (event) => {
+    setCheckInDate(event.target.value);
+  };
+
+  const handleCheckOutDateChange = (event) => {
+    setCheckOutDate(event.target.value);
   };
 
   const handleRoomTypeChange = (event) => {
     setRoomType(event.target.value);
   };
-  // Fetch recipe details
-
-  // useEffect(() => {
-  //     if (recipes.length) {
-  //         setRecipe(recipes?.find((recipe) => recipe.id === id));
-  //         return;
-  //     }
-  //     setIsLoading(true);
-  //     axios({
-  //         method: "GET",
-  //         url: `https://recipe-hub-srv-9501da59a43f.herokuapp.com/reader/recipes/${id}`,
-  //         headers: {
-  //             Authorization: "Bearer " + token,
-  //         },
-  //     })
-  //         .then((res) => {
-  //             if (res.status === 200) {
-  //                 setRecipe(res.data);
-  //             } else {
-  //                 dispatch(alertActions.setErrorMessage(res.error.message));
-  //             }
-  //             setIsLoading(false);
-  //         })
-  //         .catch((err) => {
-  //             dispatch(alertActions.setErrorMessage(err.message));
-  //             setIsLoading(false);
-  //         });
-  // }, []);
 
   return (
     <Fragment>

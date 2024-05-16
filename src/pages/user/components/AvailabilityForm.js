@@ -27,7 +27,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AvailabilityForm = () => {
+const AvailabilityForm = ({
+  handleCheckAvailability,
+  handleCheckInDateChange,
+  handleCheckOutDateChange,
+}) => {
   const classes = useStyles();
 
   return (
@@ -42,6 +46,7 @@ const AvailabilityForm = () => {
               InputLabelProps={{
                 shrink: true,
               }}
+              onChange={handleCheckInDateChange}
             />
           </Grid>
           <Grid item md={3}>
@@ -52,6 +57,7 @@ const AvailabilityForm = () => {
               InputLabelProps={{
                 shrink: true,
               }}
+              onChange={handleCheckOutDateChange}
             />
           </Grid>
           <Grid item md={3}>
@@ -70,6 +76,7 @@ const AvailabilityForm = () => {
               className={`${classes.primary}`}
               variant="contained"
               color="primary"
+              onClick={handleCheckAvailability}
             >
               Check Availability
             </Button>

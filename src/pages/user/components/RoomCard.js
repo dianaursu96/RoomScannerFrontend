@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { readerActions } from "../../../redux/store/reader-slice";
 import { alertActions } from "../../../redux/store/alert-slice";
 
-const RoomCard = ({ id, name, imageURL, price, type }) => {
+const RoomCard = ({ id, name, imageURL, price, type, isAvailable }) => {
   const token = useSelector((state) => state.auth.token);
 
   return (
@@ -63,11 +63,20 @@ const RoomCard = ({ id, name, imageURL, price, type }) => {
           <p>per night</p>
         </div>
 
-        <Link to={`/rooms/${id}`} className="btn-primary room-link">
-          Book now
-        </Link>
+        {isAvailable ? (
+          <Link to={`/rooms/${id}`} className="btn-primary room-link">
+            Book now
+          </Link>
+        ) : (
+          <Link to={`/rooms/${id}`} className="btn-primary room-link">
+            Booked
+          </Link>
+        )}
       </div>
-      <p className="room-info">{name}</p>
+      <p className="room-info">
+        {name}
+        {isAvailable ? "Available" : "Booked"}
+      </p>
     </article>
   );
 };

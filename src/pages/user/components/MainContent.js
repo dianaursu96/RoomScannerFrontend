@@ -9,7 +9,7 @@ const MainContent = ({ rooms }) => {
   const indexOfLastRecipe = currentPage * roomsPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - roomsPerPage;
   const currentRooms =
-    rooms.length > 0 && rooms.slice(indexOfFirstRecipe, indexOfLastRecipe);
+    rooms?.length > 0 && rooms.slice(indexOfFirstRecipe, indexOfLastRecipe);
 
   const paginate = (pageNumber) => {
     if (pageNumber === "previous" && currentPage > 1) {
@@ -25,7 +25,7 @@ const MainContent = ({ rooms }) => {
   };
 
   const content =
-    rooms.length > 0 ? (
+    rooms?.length > 0 ? (
       <RoomsList rooms={currentRooms} />
     ) : (
       <h1 className="no-content-container">No results found</h1>
@@ -35,7 +35,7 @@ const MainContent = ({ rooms }) => {
       <main id="main-content" className="main-content-container">
         {content}
       </main>
-      {rooms.length > 0 && (
+      {rooms?.length > 0 && (
         <Pagination
           currentPageNumber={currentPage}
           roomsPerPage={roomsPerPage}
