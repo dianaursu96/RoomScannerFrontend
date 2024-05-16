@@ -78,10 +78,7 @@ const Map = ({ hotels, coords, setChildClicked, radius }) => {
                     {" "}
                     {hotel.name}{" "}
                   </Typography>
-                  <img
-                    className={classes.pointer}
-                    src="https://suretyhotel.com/wp-content/uploads/2021/01/Deluxe-King-and-Surety-King-scaled-1280x0-c-default.webp"
-                  />
+                  <img className={classes.pointer} src={hotel.imageURL} />
                   <Rating
                     name="read-only"
                     size="small"

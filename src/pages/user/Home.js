@@ -11,7 +11,7 @@ import axios from "axios";
 const fallbackCoordinates = {
   lat: 46.75188680890758,
   lng: 23.604036376833683,
-}; // Cluj
+}; // coordoninates Cluj-Napoca (in case user doesn't allow location access)
 
 const Home = () => {
   const [hotels, setHotels] = useState([]);
@@ -20,8 +20,6 @@ const Home = () => {
   const [radius, setRadius] = useState(5); // in km
   const [coords, setCoords] = useState({});
   const [childClicked, setChildClicked] = useState(null);
-  const token =
-    "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJib2dkYW4uYXJzZW5lQGhvdGVsUmVzLnJvIiwiaWF0IjoxNzE1ODg3ODA1LCJleHAiOjE3MTU4OTE0MDV9.mIAvOTY1D9OEiA13KVCSwp5SK1nOFsTg7MgqUSs4mp32hrdPnSWOd0UdOGsP1klmMHESICoM8nCJXtd1MgQQ8Q";
   const dispatch = useDispatch();
 
   const onLoad = (autoC) => setAutocomplete(autoC);
@@ -32,6 +30,7 @@ const Home = () => {
   };
   const onRadiusChange = (e, newValue) => {
     setRadius(newValue / 5); // accounting for slider scale ratio 5:4
+    setChildClicked(null);
   };
 
   useEffect(() => {
@@ -54,9 +53,6 @@ const Home = () => {
         userLatitude: coords.lat,
         userLongitude: coords.lng,
         radius: radius,
-      },
-      headers: {
-        Authorization: "Bearer " + token,
       },
     })
       .then((res) => {
@@ -97,7 +93,6 @@ const Home = () => {
             }}
           >
             <Map
-              isLoading={isLoading}
               setChildClicked={setChildClicked}
               coords={coords}
               radius={radius * 1000} // in meters
