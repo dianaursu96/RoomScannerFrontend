@@ -1,0 +1,14 @@
+.MuiChip-root {
+    margin: 0 ! important;
+    color: var(--primary) !important;
+    border: 2px solid var(--primary) !important;
+    padding: 24px !important;
+    border-radius: 0 !important;
+    font-size: medium !important;
+    font-weight: 600 !important;
+}
+
+.MuiChip-filledDefault {
+    background: var(--primary) !important;
+    color: var(--inverse) !important;
+}

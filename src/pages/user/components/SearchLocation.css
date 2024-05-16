@@ -1,0 +1,26 @@
+.searchForm {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.searchInput {
+    border: none;
+    background-color: var(--inverse);
+    outline: solid 1px var(--inverse);
+}
+
+.searchInput:focus {
+    outline: solid 1px var(--primary);
+}
+
+.searchIcon {
+    cursor: pointer;
+    height: 100%;
+    width: 3.5em;
+    color: var(--inverse);
+    border: none;
+    outline: solid 1px var(--primary);
+    background-color: var(--primary);
+    border-radius: 3px;
+}
