@@ -14,6 +14,7 @@ import { readerActions } from "./redux/store/reader-slice";
 import { FaHome, FaHeart, FaBook } from "react-icons/fa";
 import { BsCalendarCheckFill as ReservationIcon } from "react-icons/bs";
 import AlertPopup from "./UI/components/AlertPopup";
+import Reservations from "./pages/user/Reservations";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -38,7 +39,7 @@ function App() {
 
   const menuItemsUser = [
     { label: "Home", path: "/", icon: <FaHome /> },
-    { label: "Favourites", path: "/reservations", icon: <ReservationIcon /> },
+    { label: "Reservations", path: "/reservations", icon: <ReservationIcon /> },
   ];
   const menuItemsAdmin = [{ label: "Home", path: "/", icon: <FaHome /> }];
   const guestRoutes = (
@@ -86,7 +87,7 @@ function App() {
             <RoomPage />
           </Layout>
         }
-      />
+      /> */}
       <Route
         path="/reservations"
         element={
@@ -94,7 +95,7 @@ function App() {
             <Reservations />
           </Layout>
         }
-      /> */}
+      />
       <Route
         path="/profile"
         element={

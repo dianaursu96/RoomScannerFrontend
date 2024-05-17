@@ -3,39 +3,40 @@
 *,
 ::after,
 :before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-size: 10px;
-    width: 100%;
-    font-family: "Barlow", sans-serif;
-    font-weight: 100;
-    font-style: normal;
+  font-size: 10px;
+  width: 100%;
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 input {
-    font-family: "Barlow", sans-serif;
-    font-weight: 100;
-    font-style: normal;
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 code {
-    font-family: "Barlow", sans-serif;
-    font-weight: 100;
-    font-style: normal;
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 :root {
-    --primary: #0b8b64;
-    --secondary: #1c3c38;
-    --inverse: rgb(224, 242, 238);
-    --primary-opacity: #70b09d;
-    --primary-hover: #70b09d;
-    --secondary-opacity: #424949;
-    --secondary-hover: #485150;
-    --error: #f1aba2;
-    --mainTransition: all 0.3s linear;
+  --primary: #0b8b64;
+  --secondary: #000000;
+  --inverse: rgb(224, 242, 238);
+  --primary-opacity: #70b09d;
+  --primary-hover: #70b09d;
+  --secondary-opacity: #424949;
+  --secondary-hover: #485150;
+  --error: #d96b5d;
+  --error-hover: #e08d83;
+  --mainTransition: all 0.3s linear;
 }

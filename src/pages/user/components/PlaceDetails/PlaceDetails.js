@@ -38,6 +38,16 @@ const PlaceDetails = ({ hotel, selected, refProp }) => {
               state={{
                 hotel: hotel,
               }}
+              style={{
+                fontSize: "1rem",
+                fontWeight: "700",
+                color: "var(--primary)",
+                backgroundColor: "var(--inverse)",
+                textDecoration: "none",
+                padding: "7px 7px",
+                border: "2px solid var(--primary)",
+                borderRadius: "8px",
+              }}
             >
               Check out rooms
             </Link>

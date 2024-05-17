@@ -17,8 +17,12 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(2),
     },
   },
+  // style buton check availability
   primary: {
-    width: "80%",
+    width: "100%",
+    padding: "10px",
+    borderRadius: "8px",
+    margin: "10px",
     backgroundColor: "var(--primary)",
     color: "var(--inverse)",
     "&:hover": {
