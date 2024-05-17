@@ -53,7 +53,11 @@ const RecipeDetail = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.response.data));
+        dispatch(
+          alertActions.setErrorMessage(
+            err.response ? err.responseData : err.message
+          )
+        );
         setIsLoading(false);
       });
   }, []);
@@ -81,7 +85,7 @@ const RecipeDetail = () => {
       method: "GET",
       url: `http://localhost:8081/rooms/availability`,
       params: {
-        hotelId: 1,
+        hotelId: id,
         checkin: `${checkInDate}T11:00:00`,
         checkout: `${checkOutDate}T11:00:00`,
       },
@@ -95,7 +99,11 @@ const RecipeDetail = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.response.data));
+        dispatch(
+          alertActions.setErrorMessage(
+            err.response ? err.responseData : err.message
+          )
+        );
         setIsLoading(false);
       });
   };
@@ -156,7 +164,7 @@ const RecipeDetail = () => {
                     Contact hotel
                   </span>
                 </button>
-                <button onClick={() => navigate(-1)}>
+                <button onClick={() => navigate("/")}>
                   <span>
                     <FaArrowLeft />
                     Return home

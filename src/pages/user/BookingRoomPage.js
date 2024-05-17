@@ -61,7 +61,11 @@ const BookingRoomPage = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.response.data));
+        dispatch(
+          alertActions.setErrorMessage(
+            err.response ? err.responseData : err.message
+          )
+        );
         setIsLoading(false);
       });
   }, []);
@@ -125,7 +129,11 @@ const BookingRoomPage = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.response.data));
+        dispatch(
+          alertActions.setErrorMessage(
+            err.response ? err.responseData : err.message
+          )
+        );
         setIsLoading(false);
       });
   };
