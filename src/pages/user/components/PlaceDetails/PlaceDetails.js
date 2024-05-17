@@ -33,17 +33,14 @@ const PlaceDetails = ({ hotel, selected, refProp }) => {
             {hotel.name}
           </Typography>
           <CardActions>
-            <Button
-              component={Link}
+            <Link
               to={`hotel/${hotel.id}`}
               state={{
                 hotel: hotel,
               }}
-              size="small"
-              color="primary"
             >
               Check out rooms
-            </Button>
+            </Link>
           </CardActions>
         </Box>
         <Box

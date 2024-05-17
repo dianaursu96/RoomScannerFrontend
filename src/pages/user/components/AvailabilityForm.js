@@ -72,14 +72,14 @@ const AvailabilityForm = ({
             />
           </Grid>
           <Grid item md={3}>
-            <Button
+            <button
               className={`${classes.primary}`}
               variant="contained"
               color="primary"
               onClick={handleCheckAvailability}
             >
               Check Availability
-            </Button>
+            </button>
           </Grid>
         </Grid>
       </Paper>
