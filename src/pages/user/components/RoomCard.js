@@ -1,17 +1,23 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaFireAlt, FaRegClock, FaHeart } from "react-icons/fa";
 import { BedDouble } from "lucide-react";
 import "./RoomCard.css";
 import Card from "./Card";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { readerActions } from "../../../redux/store/reader-slice";
-import { alertActions } from "../../../redux/store/alert-slice";
+import { authActions } from "../../../redux/store/auth-slice";
 
 const RoomCard = ({ id, name, imageURL, price, type, isAvailable }) => {
   const token = useSelector((state) => state.auth.token);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleClick = () => {
+    if (token) {
+      return;
+    }
+    dispatch(authActions.setCurrentPage(`/room/${id}`));
+  };
   return (
     <article
       className={`room ${
@@ -28,7 +34,8 @@ const RoomCard = ({ id, name, imageURL, price, type, isAvailable }) => {
 
         {isAvailable === undefined || isAvailable ? (
           <Link
-            to={`/room/${id}`}
+            onClick={handleClick}
+            to={token ? `/room/${id}` : "/login"}
             state={{
               room: {
                 id: id,

@@ -279,7 +279,7 @@ const Reservations = () => {
                   <TableCell align="center">
                     {row?.status === "Completed" ? (
                       <Button
-                        // onClick={}
+                        onClick={() => navigate(`/review/${row.hotelId}`)}
                         variant="contained"
                         sx={{
                           background: "var(--primary)",

@@ -4,7 +4,7 @@ import classes from "./Login.module.css";
 import Logo from "../../UI/components/Logo";
 import axios from "axios";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../redux/store/auth-slice";
 import { alertActions } from "../../redux/store/alert-slice";
 
@@ -13,6 +13,7 @@ const Login = () => {
   const passwordRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const lastAccesedPage = useSelector((state) => state.auth.currentPage);
   const onLoginHandler = (e) => {
     e.preventDefault();
     axios
@@ -36,7 +37,11 @@ const Login = () => {
             })
           );
           dispatch(authActions.login(res.data));
-          navigate("/");
+          if (lastAccesedPage !== "") {
+            navigate(lastAccesedPage);
+          } else {
+            navigate("/");
+          }
         }
       })
       .catch((error) => {

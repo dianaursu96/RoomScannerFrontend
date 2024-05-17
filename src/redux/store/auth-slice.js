@@ -7,7 +7,7 @@ const initialState = {
   lastName: "",
   email: "",
   role: "",
-  favourites: [],
+  currentPage: "[]",
 };
 const authSlice = createSlice({
   name: "auth",
@@ -25,7 +25,6 @@ const authSlice = createSlice({
       state.lastName = action.payload.lastName;
       state.email = action.payload.email;
       state.role = action.payload.role;
-      state.favourites = action.payload.favourites;
     },
     logout(state) {
       localStorage.removeItem("userData");
@@ -35,7 +34,10 @@ const authSlice = createSlice({
       state.lastName = "";
       state.email = "";
       state.role = "";
-      state.favourites = [];
+      state.currentPage = "";
+    },
+    setCurrentPage(state, action) {
+      state.currentPage = action.payload;
     },
   },
 });

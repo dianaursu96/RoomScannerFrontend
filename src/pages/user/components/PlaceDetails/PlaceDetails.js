@@ -69,7 +69,11 @@ const PlaceDetails = ({ hotel, selected, refProp }) => {
         <Box display="flex" justifyContent="space-between">
           <Typography component="legend">Distance</Typography>
           <Typography gutterBottom variant="subtitle1">
-            {hotel.distanceFromCenter}m
+            {`${
+              hotel.distanceFromCenter > 1000
+                ? (hotel.distanceFromCenter / 1000).toFixed(2)
+                : hotel.distanceFromCenter
+            } ${hotel.distanceFromCenter > 1000 ? "km" : "m"}`}
           </Typography>
         </Box>
         {/* <Box display="flex" justifyContent="space-between" my={2}>

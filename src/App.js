@@ -16,6 +16,7 @@ import { BsCalendarCheckFill as ReservationIcon } from "react-icons/bs";
 import AlertPopup from "./UI/components/AlertPopup";
 import Reservations from "./pages/user/Reservations";
 import BookingRoomPage from "./pages/user/BookingRoomPage";
+import ReviewForm from "./pages/user/ReviewForm";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -94,6 +95,14 @@ function App() {
         element={
           <Layout menuItems={menuItemsUser}>
             <Reservations />
+          </Layout>
+        }
+      />
+      <Route
+        path="/review/:id/*"
+        element={
+          <Layout menuItems={menuItemsUser}>
+            <ReviewForm />
           </Layout>
         }
       />
