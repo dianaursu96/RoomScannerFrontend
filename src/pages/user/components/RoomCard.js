@@ -40,10 +40,10 @@ const RoomCard = ({ id, name, imageURL, price, type, isAvailable }) => {
             }}
             className="btn-primary room-link"
           >
-            Book now
+            <h1>Book now</h1>
           </Link>
         ) : (
-          <Link className="btn-primary room-link">Booked</Link>
+          <Link />
         )}
       </div>
       <p className="room-info">{type}</p>

@@ -245,17 +245,13 @@ img {
 
 /* room */
 .room {
-  box-shadow: var(--lightShadow);
   transition: var(--mainTransition);
-}
-
-.room:hover {
-  box-shadow: var(--darkShadow);
 }
 
 /* this class should show an overlay over the card */
 .booked {
-  background: rgba(148, 8, 8, 0.8);
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0.3;
 }
 
 .img-container {
@@ -333,4 +329,12 @@ img {
   transition: var(--mainTransition);
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.btn-disabled {
+  text-decoration: none;
+  color: var(--secondary);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: large;
 }

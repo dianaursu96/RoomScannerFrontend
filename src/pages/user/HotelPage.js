@@ -116,10 +116,6 @@ const RecipeDetail = () => {
     setCheckOutDate(event.target.value);
   };
 
-  // const handleRoomTypeChange = (event) => {
-  //   setRoomType(event.target.value);
-  // };
-
   return (
     <Fragment>
       {isLoading && <Spinner />}
