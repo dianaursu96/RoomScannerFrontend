@@ -16,6 +16,8 @@ const RecipeDetail = () => {
   const error = useSelector((state) => state.alert.hasError);
   const [hotel, setHotel] = useState({});
   const [rooms, setRooms] = useState([]);
+  const [type, setType] = useState("");
+
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,7 +27,10 @@ const RecipeDetail = () => {
 
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
-  const [roomType, setRoomType] = useState("Single");
+
+  const handleRoomTypeChange = (type) => {
+    setType(type);
+  };
 
   useEffect(() => {
     if (location.state?.hotel) {
@@ -103,9 +108,9 @@ const RecipeDetail = () => {
     setCheckOutDate(event.target.value);
   };
 
-  const handleRoomTypeChange = (event) => {
-    setRoomType(event.target.value);
-  };
+  // const handleRoomTypeChange = (event) => {
+  //   setRoomType(event.target.value);
+  // };
 
   return (
     <Fragment>
@@ -165,10 +170,18 @@ const RecipeDetail = () => {
               handleCheckOutDateChange={handleCheckOutDateChange}
               validationError={validationError}
             />
-            <CategoryBar />
+            <CategoryBar handleRoomTypeChange={handleRoomTypeChange} />
             <>
               {isLoading && <Spinner />}
-              {!isLoading && !error && hotel && <MainContent rooms={rooms} />}
+              {!isLoading && !error && hotel && (
+                <MainContent
+                  rooms={
+                    type != ""
+                      ? rooms.filter((room) => room.type === type)
+                      : rooms
+                  }
+                />
+              )}
             </>
           </>
         )}

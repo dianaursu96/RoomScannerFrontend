@@ -34,13 +34,14 @@ const categories = [
   },
 ];
 
-const CategoryBar = () => {
+const CategoryBar = ({ handleRoomTypeChange }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const handleClick = (category) => {
     if (selectedCategory === category.value) {
       setSelectedCategory("");
     } else {
       setSelectedCategory(category.value);
+      handleRoomTypeChange(category.value);
     }
   };
 

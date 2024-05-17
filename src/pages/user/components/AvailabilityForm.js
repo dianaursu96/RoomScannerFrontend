@@ -44,7 +44,7 @@ const AvailabilityForm = ({
     <form className={classes.root} noValidate autoComplete="off">
       <Paper style={{ padding: "1em 7em 2em 7em" }} elevation={3}>
         <Grid container spacing={7} alignItems="center">
-          <Grid item md={3}>
+          <Grid item md={4}>
             <TextField
               id="check-in"
               label="Check in"
@@ -55,7 +55,7 @@ const AvailabilityForm = ({
               onChange={handleCheckInDateChange}
             />
           </Grid>
-          <Grid item md={3}>
+          <Grid item md={4}>
             <TextField
               id="check-out"
               label="Check Out"
@@ -66,18 +66,7 @@ const AvailabilityForm = ({
               onChange={handleCheckOutDateChange}
             />
           </Grid>
-          <Grid item md={3}>
-            <TextField
-              id="guests"
-              label="Guests"
-              type="number"
-              defaultValue="2"
-              InputLabelProps={{
-                shrink: true,
-              }}
-            />
-          </Grid>
-          <Grid item md={3}>
+          <Grid item md={4}>
             <button
               className={`${classes.primary}`}
               variant="contained"
