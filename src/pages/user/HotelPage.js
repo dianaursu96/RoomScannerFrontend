@@ -6,25 +6,16 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../UI/components/Spinner";
 import { MdOutlineStarPurple500 as Star } from "react-icons/md";
-import { BedDouble } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import CategoryBar from "./components/CategoryBar";
-import {
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  TextField,
-} from "@mui/material";
 import AvailabilityForm from "./components/AvailabilityForm";
 import MainContent from "./components/MainContent";
 import { alertActions } from "../../redux/store/alert-slice";
 
 const RecipeDetail = () => {
   const error = useSelector((state) => state.alert.hasError);
-  const [hotel, setHotel] = useState(null);
+  const [hotel, setHotel] = useState({});
   const [rooms, setRooms] = useState([]);
-  //   const token = useSelector((state) => state.auth.token);
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -57,7 +48,7 @@ const RecipeDetail = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.message));
+        dispatch(alertActions.setErrorMessage(err.response.data));
         setIsLoading(false);
       });
   }, []);
@@ -82,7 +73,7 @@ const RecipeDetail = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.message));
+        dispatch(alertActions.setErrorMessage(err.response.data));
         setIsLoading(false);
       });
   };
@@ -103,7 +94,7 @@ const RecipeDetail = () => {
     <Fragment>
       {isLoading && <Spinner />}
       <main id="main-content" className="main-content-container">
-        {error && <h1>Error: {error.message}</h1>}
+        {error && <h1>Error: {error}</h1>}
         {!isLoading && !error && hotel && (
           <>
             <div className={classes.recipe__container}>

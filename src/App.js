@@ -15,6 +15,7 @@ import { FaHome, FaHeart, FaBook } from "react-icons/fa";
 import { BsCalendarCheckFill as ReservationIcon } from "react-icons/bs";
 import AlertPopup from "./UI/components/AlertPopup";
 import Reservations from "./pages/user/Reservations";
+import BookingRoomPage from "./pages/user/BookingRoomPage";
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -80,14 +81,14 @@ function App() {
           </Layout>
         }
       />
-      {/* <Route
-        path="/room/:id"
+      <Route
+        path="/room/:id/*"
         element={
           <Layout menuItems={menuItemsUser}>
-            <RoomPage />
+            <BookingRoomPage />
           </Layout>
         }
-      /> */}
+      />
       <Route
         path="/reservations"
         element={

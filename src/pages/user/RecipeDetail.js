@@ -50,7 +50,7 @@ const RecipeDetail = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.message));
+        dispatch(alertActions.setErrorMessage(err.response.data));
         setIsLoading(false);
       });
   }, []);
@@ -118,7 +118,7 @@ const RecipeDetail = () => {
         }
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.message));
+        dispatch(alertActions.setErrorMessage(err.response.data));
       });
   };
 

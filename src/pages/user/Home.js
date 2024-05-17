@@ -66,7 +66,7 @@ const Home = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.message));
+        dispatch(alertActions.setErrorMessage(err.response.data));
         setIsLoading(false);
       });
   }, [radius, coords]);

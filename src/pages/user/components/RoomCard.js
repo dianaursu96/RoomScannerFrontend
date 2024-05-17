@@ -13,49 +13,7 @@ const RoomCard = ({ id, name, imageURL, price, type, isAvailable }) => {
   const token = useSelector((state) => state.auth.token);
 
   return (
-    // <Card className="recipe-item-container">
-    //     <div className="recipe-card-header">
-    //         <div>
-    //             <Link
-    //                 to={`/room/${id}`}
-    //                 state={{
-    //                     id: id,
-    //                 }}
-    //             >
-    //                 <img src='https://suretyhotel.com/wp-content/uploads/2021/01/Deluxe-King-and-Surety-King-scaled-1280x0-c-default.webp' alt="not available" />
-    //             </Link>
-    //             <div className="favorites-button-group">
-    //                 <button
-    //                     style={{
-    //                         background: "var(--inverse)",
-    //                         color: "var(--primary)",
-    //                     }}
-    //                 >
-    //                     €{price}
-    //                 </button>
-    //             </div>
-    //         </div>
-    //     </div>
-    //     <div className="recipe-card-body">
-    //         <div className="recipe-title">
-    //             <h1>{name}</h1>
-    //         </div>
-    //         <div className="recipe-details">
-    //             <div className="recipe-tag__calorie-time">
-    //                 <span>
-    //                     <BedDouble />
-    //                     {type}
-    //                 </span>
-    //             </div>
-    //         </div>
-    //     </div>
-    //     <button style={{
-    //         background: "var(--primary)",
-    //         color: "var(--inverse)",
-    //     }}>Book now</button>
-    // </Card>
     <article
-      // className="room booked"
       className={`room ${
         isAvailable === undefined || isAvailable ? "" : "booked"
       }`}
@@ -69,13 +27,23 @@ const RoomCard = ({ id, name, imageURL, price, type, isAvailable }) => {
         </div>
 
         {isAvailable === undefined || isAvailable ? (
-          <Link to={`/rooms/${id}`} className="btn-primary room-link">
+          <Link
+            to={`/room/${id}`}
+            state={{
+              room: {
+                id: id,
+                name: name,
+                imageURL: imageURL,
+                price: price,
+                type: type,
+              },
+            }}
+            className="btn-primary room-link"
+          >
             Book now
           </Link>
         ) : (
-          <Link to={`/rooms/${id}`} className="btn-primary room-link">
-            Booked
-          </Link>
+          <Link className="btn-primary room-link">Booked</Link>
         )}
       </div>
       <p className="room-info">{type}</p>

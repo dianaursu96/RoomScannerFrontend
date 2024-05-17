@@ -55,6 +55,18 @@ const Reservations = () => {
   const [currentRowId, setCurrentRowId] = useState(null);
   const navigate = useNavigate();
 
+  const calculateTotalPrice = (checkinDate, checkoutDate, pricePerNight) => {
+    // Calculate the number of days between checkin and checkout
+    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    const firstDate = new Date(checkinDate);
+    const secondDate = new Date(checkoutDate);
+    const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+
+    // Calculate total price
+    const totalPrice = diffDays * pricePerNight;
+    return totalPrice;
+  };
+
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -76,7 +88,7 @@ const Reservations = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        dispatch(alertActions.setErrorMessage(err.message));
+        dispatch(alertActions.setErrorMessage(err.response.data));
         setIsLoading(false);
       });
   }, [dispatch]);
@@ -217,7 +229,14 @@ const Reservations = () => {
                   <TableCell align="center">
                     {types.find((type) => type.value === row.roomType).label}
                   </TableCell>
-                  <TableCell align="center">{row.price}</TableCell>
+                  <TableCell align="center">
+                    €{" "}
+                    {calculateTotalPrice(
+                      row.reservation.checkin.split("T")[0],
+                      row.reservation.checkout.split("T")[0],
+                      row.price
+                    )}
+                  </TableCell>
 
                   <TableCell align="center">
                     {new Date(row.reservation.checkin).toLocaleString("en-US", {

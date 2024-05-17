@@ -11,6 +11,7 @@ const alertSlice = createSlice({
   reducers: {
     closeAlert(state) {
       state.alertOpen = false;
+      state.hasError = false;
     },
     setSuccessMessage(state, action) {
       state.alertMessage = action.payload;
