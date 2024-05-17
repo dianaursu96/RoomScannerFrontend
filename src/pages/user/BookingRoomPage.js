@@ -20,8 +20,9 @@ import {
   FaMoneyBillWave,
   FaHotel,
   FaClock,
+  FaArrowLeft,
 } from "react-icons/fa6";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useParams, useNavigate } from "react-router";
 import axios from "axios";
 import { alertActions } from "../../redux/store/alert-slice";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +31,8 @@ import Spinner from "../../UI/components/Spinner";
 const BookingRoomPage = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [validationError, setValidationError] = useState("");
   const [room, setRoom] = useState({});
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
@@ -76,6 +79,17 @@ const BookingRoomPage = () => {
   };
 
   const handleClickOpen = () => {
+    if (!checkInDate || !checkOutDate) {
+      setValidationError("Check-in and check-out dates are required.");
+      return;
+    }
+
+    if (new Date(checkOutDate) <= new Date(checkInDate)) {
+      setValidationError("Check-out date must be after check-in date.");
+      return;
+    }
+
+    setValidationError("");
     setOpen(true);
   };
 
@@ -130,8 +144,15 @@ const BookingRoomPage = () => {
         >
           <Typography
             variant="h4"
-            style={{ color: "var(--primary)", marginBottom: "20px" }}
+            style={{
+              display: "flex",
+              color: "var(--primary)",
+              marginBottom: "20px",
+            }}
           >
+            <div onClick={() => navigate(-1)}>
+              <FaArrowLeft style={{ marginRight: "15px", cursor: "pointer" }} />
+            </div>
             Book Your Room
           </Typography>
           <Typography
@@ -226,6 +247,14 @@ const BookingRoomPage = () => {
               InputLabelProps={{ shrink: true }}
               style={{ marginBottom: "20px", width: "100%" }}
             />
+            {validationError && (
+              <Typography
+                variant="body2"
+                style={{ color: "var(--error)", marginBottom: "20px" }}
+              >
+                {validationError}
+              </Typography>
+            )}
             <Button
               variant="contained"
               style={{

@@ -53,7 +53,24 @@ const RecipeDetail = () => {
       });
   }, []);
 
-  const handleCheckAvailability = () => {
+  const [validationError, setValidationError] = useState("");
+  const handleSubmitDates = (e) => {
+    e.preventDefault();
+    if (!checkInDate || !checkOutDate) {
+      setValidationError("Check-in and check-out dates are required.");
+      return;
+    }
+
+    if (new Date(checkOutDate) <= new Date(checkInDate)) {
+      setValidationError("Check-out date must be after check-in date.");
+      return;
+    }
+
+    setValidationError("");
+    checkAvailability();
+  };
+
+  const checkAvailability = () => {
     setIsLoading(true);
     axios({
       method: "GET",
@@ -95,7 +112,7 @@ const RecipeDetail = () => {
       {isLoading && <Spinner />}
       <main id="main-content" className="main-content-container">
         {error && <h1>Error: {error}</h1>}
-        {!isLoading && !error && hotel && (
+        {!error && hotel && (
           <>
             <div className={classes.recipe__container}>
               <div className={classes["recipe-image"]}>
@@ -143,14 +160,15 @@ const RecipeDetail = () => {
               </div>
             </div>
             <AvailabilityForm
-              handleCheckAvailability={handleCheckAvailability}
+              handleSubmitDates={handleSubmitDates}
               handleCheckInDateChange={handleCheckInDateChange}
               handleCheckOutDateChange={handleCheckOutDateChange}
-              handleRoomTypeChange={handleRoomTypeChange}
+              validationError={validationError}
             />
             <CategoryBar />
             <>
-              <MainContent rooms={rooms} />
+              {isLoading && <Spinner />}
+              {!isLoading && !error && hotel && <MainContent rooms={rooms} />}
             </>
           </>
         )}

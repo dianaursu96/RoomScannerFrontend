@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button, Grid, Paper } from "@material-ui/core";
+import { Typography } from "@mui/material";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AvailabilityForm = ({
-  handleCheckAvailability,
+  validationError,
+  handleSubmitDates,
   handleCheckInDateChange,
   handleCheckOutDateChange,
 }) => {
@@ -80,12 +82,20 @@ const AvailabilityForm = ({
               className={`${classes.primary}`}
               variant="contained"
               color="primary"
-              onClick={handleCheckAvailability}
+              onClick={handleSubmitDates}
             >
               Check Availability
             </button>
           </Grid>
         </Grid>
+        {validationError && (
+          <Typography
+            variant="body2"
+            style={{ color: "var(--error)", marginBottom: "20px" }}
+          >
+            {validationError}
+          </Typography>
+        )}
       </Paper>
     </form>
   );
