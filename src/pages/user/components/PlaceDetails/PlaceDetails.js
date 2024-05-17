@@ -46,18 +46,31 @@ const PlaceDetails = ({ hotel, selected, refProp }) => {
             </Button>
           </CardActions>
         </Box>
-        <Box display="flex" justifyContent="space-between">
+        <Box
+          style={{ marginBottom: "10px" }}
+          display="flex"
+          justifyContent="space-between"
+        >
           <Typography component="legend">Rating</Typography>
+          <Box display="flex">
+            <Rating name="read-only" value={Number(hotel.rating)} readOnly />
+            <Typography component="legend">
+              ({hotel.reviews?.length})
+            </Typography>
+          </Box>
+        </Box>
+        <Box display="flex" justifyContent="space-between">
+          <Typography component="legend">Distance</Typography>
           <Typography gutterBottom variant="subtitle1">
-            {hotel.rating}
+            {hotel.distanceFromCenter}m
           </Typography>
         </Box>
-        <Box display="flex" justifyContent="space-between" my={2}>
+        {/* <Box display="flex" justifyContent="space-between" my={2}>
           <Rating name="read-only" value={Number(hotel.rating)} readOnly />
           <Typography component="legend">
-            {hotel.numberOfReviews} review{hotel.numberOfReviews > 1 && "s"}
+            {hotel.reviews?.length} review{hotel.reviews?.length !== 1 && "s"}
           </Typography>
-        </Box>
+        </Box> */}
         <Box display="flex" justifyContent="space-between">
           <Typography component="legend">Price</Typography>
           <Typography gutterBottom variant="subtitle1">

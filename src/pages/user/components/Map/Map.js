@@ -22,7 +22,7 @@ const Map = ({ hotels, coords, setChildClicked, radius }) => {
       circle.setRadius(radius);
       circle.setCenter(coords);
     }
-  }, [radius, coords, hotels]);
+  }, [radius, coords]);
 
   return (
     <div className={classes.mapContainer}>

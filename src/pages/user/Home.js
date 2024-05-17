@@ -18,7 +18,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [autocomplete, setAutocomplete] = useState(null);
   const [radius, setRadius] = useState(5); // in km
-  const [coords, setCoords] = useState({});
+  const [coords, setCoords] = useState(fallbackCoordinates);
   const [childClicked, setChildClicked] = useState(null);
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ const Home = () => {
     setCoords({ lat, lng });
   };
   const onRadiusChange = (e, newValue) => {
-    setRadius(newValue / 5); // accounting for slider scale ratio 5:4
+    setRadius(newValue / 5); // accounting for slider scale ratio 5:1
     setChildClicked(null);
   };
 
@@ -47,9 +47,9 @@ const Home = () => {
   useEffect(() => {
     setIsLoading(true);
     axios({
-      method: "POST",
+      method: "GET",
       url: "http://localhost:8081/location/hotels",
-      data: {
+      params: {
         userLatitude: coords.lat,
         userLongitude: coords.lng,
         radius: radius,
@@ -57,7 +57,9 @@ const Home = () => {
     })
       .then((res) => {
         if (res.status === 200) {
-          setHotels(res.data);
+          setHotels(
+            res.data.sort((a, b) => a.distanceFromCenter - b.distanceFromCenter)
+          );
         } else {
           dispatch(alertActions.setErrorMessage(res.error.message));
         }
@@ -67,7 +69,7 @@ const Home = () => {
         dispatch(alertActions.setErrorMessage(err.message));
         setIsLoading(false);
       });
-  }, [autocomplete, radius, coords]);
+  }, [radius, coords]);
 
   return (
     <>

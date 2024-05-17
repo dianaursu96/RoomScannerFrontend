@@ -36,7 +36,7 @@ const RecipeDetail = () => {
     setIsLoading(true);
     axios({
       method: "GET",
-      url: `https://recipe-hub-srv-9501da59a43f.herokuapp.com/reader/recipes/${id}`,
+      url: `http://localhost:8081/reader/recipes/${id}`,
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -97,7 +97,7 @@ const RecipeDetail = () => {
   const favouriteHandler = () => {
     axios({
       method: favorited ? "DELETE" : "POST",
-      url: `https://recipe-hub-srv-9501da59a43f.herokuapp.com/reader/favourites/${
+      url: `http://localhost:8081/reader/favourites/${
         favorited ? "delete" : "add"
       }?recipeId=${id}`,
       headers: {

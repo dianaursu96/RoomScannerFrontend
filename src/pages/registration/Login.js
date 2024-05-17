@@ -6,7 +6,6 @@ import axios from "axios";
 
 import { useDispatch } from "react-redux";
 import { authActions } from "../../redux/store/auth-slice";
-import { readerActions } from "../../redux/store/reader-slice";
 import { alertActions } from "../../redux/store/alert-slice";
 
 const Login = () => {
@@ -17,7 +16,7 @@ const Login = () => {
   const onLoginHandler = (e) => {
     e.preventDefault();
     axios
-      .post(`https://recipe-hub-srv-9501da59a43f.herokuapp.com/login`, {
+      .post(`http://localhost:8081/login`, {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       })
@@ -37,7 +36,6 @@ const Login = () => {
             })
           );
           dispatch(authActions.login(res.data));
-          dispatch(readerActions.initializeFavourites(res.data.favourites));
           navigate("/");
         }
       })

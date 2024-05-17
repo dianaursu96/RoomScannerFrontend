@@ -54,7 +54,12 @@ const RoomCard = ({ id, name, imageURL, price, type, isAvailable }) => {
     //         color: "var(--inverse)",
     //     }}>Book now</button>
     // </Card>
-    <article className="room">
+    <article
+      // className="room booked"
+      className={`room ${
+        isAvailable === undefined || isAvailable ? "" : "booked"
+      }`}
+    >
       <div className="img-container">
         <img src={imageURL} alt="single room" />
 
@@ -63,7 +68,7 @@ const RoomCard = ({ id, name, imageURL, price, type, isAvailable }) => {
           <p>per night</p>
         </div>
 
-        {isAvailable ? (
+        {isAvailable === undefined || isAvailable ? (
           <Link to={`/rooms/${id}`} className="btn-primary room-link">
             Book now
           </Link>
@@ -73,10 +78,7 @@ const RoomCard = ({ id, name, imageURL, price, type, isAvailable }) => {
           </Link>
         )}
       </div>
-      <p className="room-info">
-        {name}
-        {isAvailable ? "Available" : "Booked"}
-      </p>
+      <p className="room-info">{type}</p>
     </article>
   );
 };

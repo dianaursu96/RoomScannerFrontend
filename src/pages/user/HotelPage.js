@@ -65,9 +65,9 @@ const RecipeDetail = () => {
   const handleCheckAvailability = () => {
     setIsLoading(true);
     axios({
-      method: "POST",
+      method: "GET",
       url: `http://localhost:8081/rooms/availability`,
-      data: {
+      params: {
         hotelId: 1,
         checkin: `${checkInDate}T11:00:00`,
         checkout: `${checkOutDate}T11:00:00`,
@@ -115,63 +115,32 @@ const RecipeDetail = () => {
               <div className={classes["recipe-details"]}>
                 <h1>{hotel.name}</h1>
                 <div className={classes["recipe-tag__calorie-time"]}>
-                  <div>
-                    <span>
-                      <Star />
-                    </span>
-                    <span>{hotel.rating}</span>
-                  </div>
-                  <div>
-                    out of <span>{hotel.numberOfReviews}</span>reviews
-                  </div>
+                  {hotel.rating !== "NaN" ? (
+                    <>
+                      <div>
+                        <span>
+                          <Star />
+                        </span>
+                        <span>{hotel.rating}</span>
+                      </div>
+                      <div>
+                        out of <span>{hotel.reviews?.length}</span>review
+                        {hotel.reviews?.length !== 1 && "s"}
+                      </div>
+                    </>
+                  ) : (
+                    <div>
+                      <span>No reviews</span>
+                    </div>
+                  )}
                 </div>
-                {/* <div className={classes["recipe-tag-group"]}>{hotel.facilities}</div> */}
               </div>
-              {/* <div className={classes["recipe-preparation"]}>
-                                <TextField
-                                    id="check-in-date"
-                                    label="Check In"
-                                    type="date"
-                                    value={checkInDate}
-                                    onChange={handleCheckInDateChange}
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                />
-                            </div>
-                            <div className={classes["recipe-ingredients"]}>
-                                <TextField
-                                    id="check-out-date"
-                                    label="Check Out"
-                                    type="date"
-                                    value={checkOutDate}
-                                    onChange={handleCheckOutDateChange}
-                                    InputLabelProps={{
-                                        shrink: true,
-                                    }}
-                                />
-                            </div>
-                            <div className={classes["recipe-nutritional-facts"]}>
-                                <FormControl>
-                                    <InputLabel >Room Type</InputLabel>
-                                    <Select
-                                        label="Room Type"
-                                        value={roomType}
-                                        onChange={handleRoomTypeChange}
-                                    >
-                                        <MenuItem value="Single">Single</MenuItem>
-                                        <MenuItem value="Double">Double</MenuItem>
-                                        <MenuItem value="Matrimonial">Matrimonial</MenuItem>
-                                        <MenuItem value="Suite">Suite</MenuItem>
-                                    </Select>
-                                </FormControl>
-                            </div> */}
 
               <div className={classes["favorites-button-group"]}>
                 <button>
                   <span>
                     <FaPhone />
-                    Contact this hotel
+                    Contact hotel
                   </span>
                 </button>
                 <button onClick={() => navigate(-1)}>
