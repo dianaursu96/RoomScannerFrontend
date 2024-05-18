@@ -66,14 +66,14 @@ function App() {
   );
   const userRoutes = (
     <>
-      <Route
+      {/* <Route
         path="*"
         element={
           <Layout>
             <RedirectHomepage menuItems={menuItemsUser} />
           </Layout>
         }
-      />
+      /> */}
       <Route
         path="/"
         element={
@@ -153,14 +153,14 @@ function App() {
       <Routes>
         {!token && (
           <>
-            <Route
+            {/* <Route
               path="*"
               element={
                 <Layout>
                   <RedirectHomepage />
                 </Layout>
               }
-            />
+            /> */}
             <Route
               path="/login"
               element={
