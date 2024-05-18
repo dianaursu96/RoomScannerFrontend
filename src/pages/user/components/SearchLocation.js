@@ -4,7 +4,6 @@ import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
 import "./SearchLocation.css";
 import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { readerActions } from "../../../redux/store/reader-slice";
 
 const SearchLocation = ({ onLoad, onPlaceChanged }) => {
   return (

@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { FaFireAlt, FaRegClock, FaArrowLeft } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
-import classes from "./RecipeDetail.module.css";
+import classes from "./HotelDetail.module.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../UI/components/Spinner";
@@ -12,7 +12,7 @@ import AvailabilityForm from "./components/AvailabilityForm";
 import MainContent from "./components/MainContent";
 import { alertActions } from "../../redux/store/alert-slice";
 
-const RecipeDetail = () => {
+const HotelDetail = () => {
   const error = useSelector((state) => state.alert.hasError);
   const [hotel, setHotel] = useState({});
   const [rooms, setRooms] = useState([]);
@@ -123,15 +123,15 @@ const RecipeDetail = () => {
         {error && <h1>Error: {error}</h1>}
         {!error && hotel && (
           <>
-            <div className={classes.recipe__container}>
-              <div className={classes["recipe-image"]}>
-                <div className={classes["recipe-image__container"]}>
+            <div className={classes.hotel__container}>
+              <div className={classes["hotel-image"]}>
+                <div className={classes["hotel-image__container"]}>
                   <img src={hotel.imageURL} alt="" />
                 </div>
               </div>
-              <div className={classes["recipe-details"]}>
+              <div className={classes["hotel-details"]}>
                 <h1>{hotel.name}</h1>
-                <div className={classes["recipe-tag__calorie-time"]}>
+                <div className={classes["hotel-review"]}>
                   {hotel.rating !== "NaN" ? (
                     <>
                       <div>
@@ -153,7 +153,7 @@ const RecipeDetail = () => {
                 </div>
               </div>
 
-              <div className={classes["favorites-button-group"]}>
+              <div className={classes["action-button-group"]}>
                 <button>
                   <span>
                     <FaPhone />
@@ -194,4 +194,4 @@ const RecipeDetail = () => {
   );
 };
 
-export default RecipeDetail;
+export default HotelDetail;

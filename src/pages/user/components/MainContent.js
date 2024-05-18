@@ -6,10 +6,10 @@ import Pagination from "./Pagination";
 const MainContent = ({ rooms }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const roomsPerPage = 4;
-  const indexOfLastRecipe = currentPage * roomsPerPage;
-  const indexOfFirstRecipe = indexOfLastRecipe - roomsPerPage;
+  const indexOfLastRoom = currentPage * roomsPerPage;
+  const indexOfFirstRoom = indexOfLastRoom - roomsPerPage;
   const currentRooms =
-    rooms?.length > 0 && rooms.slice(indexOfFirstRecipe, indexOfLastRecipe);
+    rooms?.length > 0 && rooms.slice(indexOfFirstRoom, indexOfLastRoom);
 
   const paginate = (pageNumber) => {
     if (pageNumber === "previous" && currentPage > 1) {

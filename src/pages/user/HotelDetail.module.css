@@ -1,5 +1,5 @@
 /* mobile */
-.recipe__container {
+.hotel__container {
   display: grid;
   padding-top: 5em;
   padding-bottom: 5em;
@@ -7,24 +7,24 @@
   grid-template-columns: 1fr;
   text-align: center;
   grid-template-areas:
-    "recipe-details"
-    "recipe-image"
+    "hotel-details"
+    "hotel-image"
     "cta-buttons";
   row-gap: 30px;
 }
 
-.recipe-image {
-  grid-area: recipe-image;
+.hotel-image {
+  grid-area: hotel-image;
 }
 
-.recipe-image__container {
+.hotel-image__container {
   max-width: 100%;
   margin: 10px auto;
   height: 100%;
   padding: 1.5em;
 }
 
-.recipe-image__container img {
+.hotel-image__container img {
   height: 100%;
   display: block;
   width: 100%;
@@ -32,11 +32,11 @@
   outline: solid 2px var(--secondary);
 }
 
-.recipe-details {
-  grid-area: recipe-details;
+.hotel-details {
+  grid-area: hotel-details;
 }
 
-.recipe-details h1 {
+.hotel-details h1 {
   color: var(--secondary);
   font-size: 1.8rem;
   margin-bottom: 0.2em;
@@ -44,13 +44,13 @@
   padding-left: 10px;
 }
 
-.recipe-details i {
+.hotel-details i {
   color: var(--secondary);
   font-size: 1rem;
   font-weight: 500;
 }
 
-.recipe-tag__calorie-time {
+.hotel-review {
   margin-bottom: 1em;
   margin-top: 2em;
   font-size: 0.8rem;
@@ -60,13 +60,13 @@
   gap: 12px;
 }
 
-.recipe-tag__calorie-time div > span:first-child {
+.hotel-review div > span:first-child {
   margin-right: 0.5em;
   color: var(--primary);
   font-weight: 500;
 }
 
-.recipe-tag-group {
+.hotel-tag-group {
   display: flex;
   justify-content: center;
   gap: 16px;
@@ -74,24 +74,24 @@
   font-weight: 800;
 }
 
-.recipe-tag-group span {
+.hotel-tag-group span {
   padding: 0.8em 0.8em;
   color: var(--inverse);
   background-color: var(--secondary);
   border-radius: 10px;
 }
 
-.favorites-button-group {
+.action-button-group {
   font-size: 1.8rem;
   grid-area: cta-buttons;
 }
 
-.favorites-button-group a {
+.action-button-group a {
   display: inline-block;
 }
 
-.favorites-button-group button,
-.favorites-button-group a {
+.action-button-group button,
+.action-button-group a {
   padding: 1.2em 0.8em;
   width: 75%;
   text-transform: uppercase;
@@ -100,31 +100,31 @@
   cursor: pointer;
 }
 
-.favorites-button-group button > span {
+.action-button-group button > span {
   display: flex;
   justify-content: center;
   gap: 8px;
 }
 
-.favorites-button-group button:first-of-type {
+.action-button-group button:first-of-type {
   margin-bottom: 1.5em;
   background: #fff;
   border: 1px solid var(--primary);
   color: var(--primary);
 }
 
-.favorites-button-group button:first-of-type:hover {
+.action-button-group button:first-of-type:hover {
   background: var(--primary-hover);
   color: var(--secondary);
 }
 
-.favorites-button-group a {
+.action-button-group a {
   color: var(--secondary);
   text-decoration: none;
   background: var(--inverse);
 }
 
-.favorites-button-group a:hover {
+.action-button-group a:hover {
   background: #999;
   color: #fff;
 }
@@ -136,7 +136,7 @@ span {
 
 /* tablet*/
 @media screen and (min-width: 620px) {
-  .recipe__container {
+  .hotel__container {
     row-gap: 20px;
     padding-top: 5em;
     padding-bottom: 5em;
@@ -144,53 +144,53 @@ span {
     grid-template-columns: 1fr 1fr 1fr;
     text-align: center;
     grid-template-areas:
-      "recipe-details recipe-details recipe-details"
-      "recipe-image recipe-image recipe-image"
+      "hotel-details hotel-details hotel-details"
+      "hotel-image hotel-image hotel-image"
       "cta-buttons cta-buttons cta-buttons";
   }
 
-  .recipe-details h1 {
+  .hotel-details h1 {
     font-size: 3.2rem;
   }
 
-  .recipe-tag__calorie-time {
+  .hotel-review {
     font-size: 1.2rem;
     font-weight: 500;
   }
 
-  .recipe-tag-group span {
+  .hotel-tag-group span {
     font-size: 0.6rem;
   }
 }
 
 @media screen and (min-width: 925px) {
-  .recipe__container {
+  .hotel__container {
     padding-bottom: 5em;
     grid-auto-columns: 1fr;
     grid-template-columns: 0fr 0.6fr 1fr;
     grid-template-areas:
-      "recipe-image recipe-image recipe-details"
-      "recipe-image recipe-image cta-buttons";
+      "hotel-image hotel-image hotel-details"
+      "hotel-image hotel-image cta-buttons";
   }
 
-  .recipe__container .recipe-image__container {
+  .hotel__container .hotel-image__container {
     padding: 0;
   }
 
-  .recipe-details h1 {
+  .hotel-details h1 {
     font-size: 4rem;
   }
 
-  .recipe-tag__calorie-time {
+  .hotel-review {
     font-size: 1.2rem;
     font-weight: 500;
   }
 
-  .recipe-tag-group span {
+  .hotel-tag-group span {
     font-size: 0.85rem;
   }
 
-  .favorites-button-group {
+  .action-button-group {
     padding-top: 1.6em;
   }
 }

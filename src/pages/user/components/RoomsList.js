@@ -6,7 +6,7 @@ const RoomsList = ({ rooms }) => {
   return (
     <div>
       <h1>Available rooms</h1>
-      <div className="recipeList__container">
+      <div className="roomsList__container">
         {rooms.map((room) => (
           <RoomCard
             key={room.id}

@@ -27,13 +27,11 @@ const Pagination = ({
             key={number}
             className={currentPageNumber === number ? "active" : ""}
           >
-            <a href="#recipes" onClick={() => paginate(number)}>
-              {number}
-            </a>
+            <a onClick={() => paginate(number)}>{number}</a>
           </li>
         ))}
         <li>
-          <a href="#recipes" onClick={() => paginate("next")}>
+          <a onClick={() => paginate("next")}>
             <FaArrowCircleRight />
           </a>
         </li>

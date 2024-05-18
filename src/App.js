@@ -10,7 +10,6 @@ import HotelPage from "./pages/user/HotelPage";
 import Layout from "./UI/components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./redux/store/auth-slice";
-import { readerActions } from "./redux/store/reader-slice";
 import { FaHome, FaHeart, FaBook } from "react-icons/fa";
 import { BsCalendarCheckFill as ReservationIcon } from "react-icons/bs";
 import AlertPopup from "./UI/components/AlertPopup";

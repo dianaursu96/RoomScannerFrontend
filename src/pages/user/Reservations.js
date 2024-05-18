@@ -6,12 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Badge from "@mui/material/Badge";
-import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import { FaEdit, FaPlus } from "react-icons/fa";
-import Select from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../UI/components/Spinner";
@@ -24,9 +20,7 @@ import {
   makeStyles,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { chefActions } from "../../redux/store/chef-slice";
 import { alertActions } from "../../redux/store/alert-slice";
-import { Chip } from "@material-ui/core";
 
 const types = [
   {
@@ -125,7 +119,7 @@ const Reservations = () => {
       {isLoading && <Spinner />}
       {!isLoading && !error && (
         <TableContainer component={Paper} style={{ padding: "2em" }}>
-          <Table style={{ minWidth: 400 }} aria-label="recipes table">
+          <Table style={{ minWidth: 400 }}>
             <TableHead style={{ backgroundColor: "var(--inverse)" }}>
               <TableRow>
                 <TableCell
