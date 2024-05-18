@@ -50,7 +50,7 @@ const BookingRoomPage = () => {
     setIsLoading(true);
     axios({
       method: "GET",
-      url: `http://localhost:8081/rooms/${id}`,
+      url: `https://room-scanner-srv-cca7f170ae6f.herokuapp.com/rooms/${id}`,
     })
       .then((res) => {
         if (res.status === 200) {
@@ -106,7 +106,7 @@ const BookingRoomPage = () => {
     setIsLoading(true);
     axios({
       method: "POST",
-      url: `http://localhost:8081/user/reservation/create`,
+      url: `https://room-scanner-srv-cca7f170ae6f.herokuapp.com/user/reservation/create`,
       params: {
         roomId: room.id,
         checkin: `${checkInDate}T15:00:00`,

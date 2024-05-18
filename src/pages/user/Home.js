@@ -48,7 +48,7 @@ const Home = () => {
     setIsLoading(true);
     axios({
       method: "GET",
-      url: "http://localhost:8081/location/hotels",
+      url: "https://room-scanner-srv-cca7f170ae6f.herokuapp.com/location/hotels",
       params: {
         userLatitude: coords.lat,
         userLongitude: coords.lng,

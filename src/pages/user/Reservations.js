@@ -60,7 +60,7 @@ const Reservations = () => {
     setIsLoading(true);
     axios({
       method: "GET",
-      url: `http://localhost:8081/user/reservations`,
+      url: `https://room-scanner-srv-cca7f170ae6f.herokuapp.com/user/reservations`,
       headers: {
         Authorization: "Bearer " + token,
       },
@@ -88,7 +88,7 @@ const Reservations = () => {
       setIsLoading(true);
       await axios({
         method: "DELETE",
-        url: `http://localhost:8081/user/reservation/delete/${reservationId}`,
+        url: `https://room-scanner-srv-cca7f170ae6f.herokuapp.com/user/reservation/delete/${reservationId}`,
         headers: {
           Authorization: "Bearer " + token,
         },

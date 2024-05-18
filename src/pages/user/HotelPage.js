@@ -41,7 +41,7 @@ const HotelDetail = () => {
     setIsLoading(true);
     axios({
       method: "GET",
-      url: `http://localhost:8081/hotels/${id}`,
+      url: `https://room-scanner-srv-cca7f170ae6f.herokuapp.com/hotels/${id}`,
     })
       .then((res) => {
         if (res.status === 200) {
@@ -83,7 +83,7 @@ const HotelDetail = () => {
     setIsLoading(true);
     axios({
       method: "GET",
-      url: `http://localhost:8081/rooms/availability`,
+      url: `https://room-scanner-srv-cca7f170ae6f.herokuapp.com/rooms/availability`,
       params: {
         hotelId: id,
         checkin: `${checkInDate}T11:00:00`,

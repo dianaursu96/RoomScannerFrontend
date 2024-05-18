@@ -61,7 +61,7 @@ const SignUp = () => {
     if (validateForm()) {
       try {
         const res = await axios.post(
-          "http://localhost:8081/register",
+          "https://room-scanner-srv-cca7f170ae6f.herokuapp.com/register",
           formData
         );
 

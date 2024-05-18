@@ -27,7 +27,7 @@ const Map = ({ hotels, coords, setChildClicked, radius }) => {
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyCsLIRxYGykQSLKoFkgNWmNVgd05fdXMxs" }}
+        bootstrapURLKeys={{ key: "AIzaSyA5CmH402pzq5p59qUKRM3yYuvLKKlKOuQ" }}
         defaultCenter={coords}
         center={coords}
         defaultZoom={13}

@@ -17,7 +17,7 @@ const Login = () => {
   const onLoginHandler = (e) => {
     e.preventDefault();
     axios
-      .post(`http://localhost:8081/login`, {
+      .post(`https://room-scanner-srv-cca7f170ae6f.herokuapp.com/login`, {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       })

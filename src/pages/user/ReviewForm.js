@@ -49,7 +49,7 @@ const ReviewForm = () => {
 
     axios({
       method: "POST",
-      url: `http://localhost:8081/user/review/create`,
+      url: `https://room-scanner-srv-cca7f170ae6f.herokuapp.com/user/review/create`,
       data: formData,
       headers: {
         Authorization: "Bearer " + token,

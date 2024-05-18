@@ -55,11 +55,15 @@ const ProfilePage = () => {
 
     if (validateForm()) {
       try {
-        const res = await axios.put("http://localhost:8081/update", formData, {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
+        const res = await axios.put(
+          "https://room-scanner-srv-cca7f170ae6f.herokuapp.com/user/update",
+          formData,
+          {
+            headers: {
+              Authorization: "Bearer " + token,
+            },
+          }
+        );
         if (res.status === 200) {
           dispatch(alertActions.setSuccessMessage("Operation successful!"));
           dispatch(
