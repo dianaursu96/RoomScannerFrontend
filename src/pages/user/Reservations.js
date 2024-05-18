@@ -7,18 +7,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
-import { FaEdit, FaPlus } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Spinner from "../../UI/components/Spinner";
-import {
-  FormControl,
-  InputLabel,
-  Input,
-  Modal,
-  Box,
-  makeStyles,
-} from "@mui/material";
+import { Modal, Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { alertActions } from "../../redux/store/alert-slice";
 

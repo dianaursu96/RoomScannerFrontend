@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { FaFireAlt, FaRegClock, FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 import { FaPhone } from "react-icons/fa6";
 import classes from "./HotelDetail.module.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";

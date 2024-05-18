@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import RedirectHomepage from "./pages/registration/Registration";
 import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
@@ -10,7 +10,7 @@ import HotelPage from "./pages/user/HotelPage";
 import Layout from "./UI/components/Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "./redux/store/auth-slice";
-import { FaHome, FaHeart, FaBook } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 import { BsCalendarCheckFill as ReservationIcon } from "react-icons/bs";
 import AlertPopup from "./UI/components/AlertPopup";
 import Reservations from "./pages/user/Reservations";

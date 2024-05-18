@@ -1,9 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Autocomplete } from "@react-google-maps/api";
-import { AppBar, Toolbar, Typography, InputBase, Box } from "@material-ui/core";
+import { InputBase } from "@material-ui/core";
 import "./SearchLocation.css";
 import { BiSearch } from "react-icons/bi";
-import { useDispatch } from "react-redux";
 
 const SearchLocation = ({ onLoad, onPlaceChanged }) => {
   return (
