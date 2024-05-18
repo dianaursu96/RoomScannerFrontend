@@ -7,7 +7,7 @@ const initialState = {
   lastName: "",
   email: "",
   role: "",
-  currentPage: "[]",
+  currentPage: "",
 };
 const authSlice = createSlice({
   name: "auth",
