@@ -1,9 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../UI/components/Logo";
 import classes from "./Registration.module.css";
 
 const Registration = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate("/");
+  }, []);
   return (
     <div className={classes.registration}>
       <Logo />

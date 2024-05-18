@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import Registration from "./pages/registration/Registration";
+import RedirectHomepage from "./pages/registration/Registration";
 import Login from "./pages/registration/Login";
 import SignUp from "./pages/registration/SignUp";
 import GuestHomePage from "./pages/user/Home";
@@ -66,6 +66,14 @@ function App() {
   );
   const userRoutes = (
     <>
+      <Route
+        path="*"
+        element={
+          <Layout>
+            <RedirectHomepage menuItems={menuItemsUser} />
+          </Layout>
+        }
+      />
       <Route
         path="/"
         element={
@@ -145,6 +153,14 @@ function App() {
       <Routes>
         {!token && (
           <>
+            <Route
+              path="*"
+              element={
+                <Layout>
+                  <RedirectHomepage />
+                </Layout>
+              }
+            />
             <Route
               path="/login"
               element={
