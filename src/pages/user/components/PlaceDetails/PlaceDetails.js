@@ -2,7 +2,6 @@ import React from "react";
 import {
   Box,
   Typography,
-  Button,
   Card,
   CardMedia,
   CardContent,
@@ -76,12 +75,6 @@ const PlaceDetails = ({ hotel, selected, refProp }) => {
             } ${hotel.distanceFromCenter > 1000 ? "km" : "m"}`}
           </Typography>
         </Box>
-        {/* <Box display="flex" justifyContent="space-between" my={2}>
-          <Rating name="read-only" value={Number(hotel.rating)} readOnly />
-          <Typography component="legend">
-            {hotel.reviews?.length} review{hotel.reviews?.length !== 1 && "s"}
-          </Typography>
-        </Box> */}
         <Box display="flex" justifyContent="space-between">
           <Typography component="legend">Price</Typography>
           <Typography gutterBottom variant="subtitle1">

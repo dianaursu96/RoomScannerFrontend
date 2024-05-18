@@ -39,6 +39,7 @@ const CategoryBar = ({ handleRoomTypeChange }) => {
   const handleClick = (category) => {
     if (selectedCategory === category.value) {
       setSelectedCategory("");
+      handleRoomTypeChange("");
     } else {
       setSelectedCategory(category.value);
       handleRoomTypeChange(category.value);
