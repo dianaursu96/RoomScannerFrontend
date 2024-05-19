@@ -138,7 +138,7 @@ const HotelDetail = () => {
                         <span>
                           <Star />
                         </span>
-                        <span>{hotel.rating}</span>
+                        <span>{hotel.rating.toFixed(2)}</span>
                       </div>
                       <div>
                         out of <span>{hotel.reviews?.length}</span>review
